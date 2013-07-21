@@ -1,0 +1,27 @@
+Web Development in Clojure
+
+* 1. Intro to lein
+** Overview
+** project.clj
+** Specifying dependencies
+* 2. Ring basics
+** Handlers
+** Representing requests and responses as maps
+** Parameters
+** First "Hello World" app using lein-ring (using hand-rolled routing)
+** middleware
+* 3. Compojure
+** Routing
+** mime types
+* 4. Deployment
+** Lets get the hello world app live on heroku
+** Discuss alternative deployment options. E.g Generate an uberjar
+* 5. The Monitoring Dashboard
+** Imagine that you have an online business capturing orders. You would like a dashboard that shows
+   the number of orders made, status of background job queues.
+** Templating with clj-jade
+** Adding some style (general static resource handling)
+* 6. Stories (needs fleshing out)
+** Number of orders - Show the number of orders that have been made today so far
+** Number of failed jobs on the email queue
+** The number of email jobs should be red when over 0
