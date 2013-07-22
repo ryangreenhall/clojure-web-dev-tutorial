@@ -25,3 +25,20 @@ Web Development in Clojure
 ** Number of orders - Show the number of orders that have been made today so far
 ** Number of failed jobs on the email queue
 ** The number of email jobs should be red when over 0
+
+
+
+* TODO
+** Do we mention nginx?
+** Where do we deploy?
+   Heroku (easy, but a black box)
+   shared ec2 instance (harder, but full transparency as to what is going on)
+
+** Web frameworks worth mentioning?
+   Pedestal - http://pedestal.io/
+   Luminus - http://www.luminusweb.net/
+   Noir (although I think it's unsupported now) - http://www.webnoir.org/
+
+** Templating libraries worth being aware of
+   Hiccup
+   Moustache
