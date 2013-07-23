@@ -25,3 +25,5 @@ Web Development in Clojure
 ** Number of orders - Show the number of orders that have been made today so far
 ** Number of failed jobs on the email queue
 ** The number of email jobs should be red when over 0
+
+Perhaps have skeleton code with key pieces to be added by the attendees?
