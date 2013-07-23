@@ -30,6 +30,9 @@ Web Development in Clojure
 Perhaps have skeleton code with key pieces to be added by the attendees?
 
 
+* 7. Testing
+** Out of container testing
+
 * TODO
 ** Do we mention nginx?
 ** Where do we deploy?
