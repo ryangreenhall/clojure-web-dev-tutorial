@@ -13,15 +13,24 @@
    :headers {:user-agent "Mozilla/5.0" }})
 
 (defn handler
-  "Handler that says hello"
+  "Handler that writes a simple sentance"
   [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body "Hello World"})
+   :body "FPDays 2013"
 
+   })
+
+(defn show-request-handler
+  "Handler that writes a simple sentance"
+  [request]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body (str request)})
 
 ;; Hand rolled routing
 ;; Introduce helpers for generating a response
+;; Generating json
 
 (comment
   (use 'ring.adapter.jetty)
