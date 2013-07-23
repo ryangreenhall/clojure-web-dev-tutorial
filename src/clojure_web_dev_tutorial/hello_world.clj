@@ -22,7 +22,7 @@
    })
 
 (defn show-request-handler
-  "Handler that writes a simple sentance"
+  "Handler that writes the contents of the request"
   [request]
   {:status 200
    :headers {"Content-Type" "text/html"}
