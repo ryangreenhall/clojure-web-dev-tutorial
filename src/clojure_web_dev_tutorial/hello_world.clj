@@ -17,7 +17,7 @@
   "Handler that writes a simple sentance"
   [request]
   {:status 200
-   :headers {"Content-Type" "text/html"}
+   :headers {"Content-Type" "text/plain"}
    :body "FPDays 2013"
 
    })
@@ -26,14 +26,14 @@
   "Handler that writes the contents of the request"
   [request]
   {:status 200
-   :headers {"Content-Type" "text/html"}
+   :headers {"Content-Type" "text/plain"}
    :body (str request)})
 
 (defn routing-handler
   [request]
   (if (= "/" (:uri request))
     {:status 200
-     :headers {"Content-Type" "text/html"}
+     :headers {"Content-Type" "text/plain"}
      :body (str "Hello FPDays 2013")}
     {:status 404
      :body (str "Not Found")}))
@@ -54,6 +54,9 @@
 ;; Hand rolled routing
 ;; Introduce helpers for generating a response
 ;; Generating json
+;; Static Resources
+;; Parameters
+
 
 (comment
   (use 'ring.adapter.jetty)
