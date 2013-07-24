@@ -28,6 +28,15 @@
    :headers {"Content-Type" "text/html"}
    :body (str request)})
 
+(defn routing-handler
+  [request]
+  (if (= "/" (:uri request))
+    {:status 200
+     :headers {"Content-Type" "text/html"}
+     :body (str "Hello FPDays 2013")}
+    {:status 404
+     :body (str "Not Found")}))
+
 ;; Hand rolled routing
 ;; Introduce helpers for generating a response
 ;; Generating json
