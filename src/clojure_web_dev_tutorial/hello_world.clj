@@ -1,4 +1,5 @@
-(ns clojure-web-dev-tutorial.hello-world)
+(ns clojure-web-dev-tutorial.hello-world
+  (:use [ring.util.response]))
 
 (comment
   ;; request
@@ -36,6 +37,19 @@
      :body (str "Hello FPDays 2013")}
     {:status 404
      :body (str "Not Found")}))
+
+(defn handler-with-response-helpers
+  [request]
+  (if (= "/" (:uri request))
+    (->
+     (response "FPDays 2013")
+     (content-type "text/plain"))
+    (->
+     (response "Not Found")
+     (content-type "text/plain")
+     (status 404))))
+
+
 
 ;; Hand rolled routing
 ;; Introduce helpers for generating a response
