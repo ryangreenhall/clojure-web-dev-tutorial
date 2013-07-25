@@ -6,10 +6,15 @@ Web Development in Clojure
 ** Specifying dependencies
 * 2. Ring basics
 ** Handlers
-** Representing requests and responses as maps
+Define how your web app will behave. A ring handler is a function that takes a request map and returns a response map.
+** Request and Response Maps
+** Middleware
+** Adaptors
+e.g Jetty adaptor
+
 ** Parameters
 ** First "Hello World" app using lein-ring (using hand-rolled routing)
-** middleware
+
 * 3. Compojure
 ** Routing
 ** mime types
