@@ -3,7 +3,8 @@
             [ring.adapter.jetty :as jetty]
             [clojure.data.json  :refer [json-str]]
             [hiccup.core                :as hiccup]
-            [hiccup.page                :as page]))
+            [hiccup.page                :as page]
+            [clojure-web-dev-tutorial.views.hello-world :as view]))
 
 (compojure/defroutes app
 
@@ -18,6 +19,10 @@
       [:body
        [:div.header
         [:h1 "Hello World"]]]]))
+
+  (GET "/:name"
+    [name]
+    (view/show name))
 
   (GET "/error-name"
     []
