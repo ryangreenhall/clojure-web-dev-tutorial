@@ -1,7 +1,29 @@
 (ns clojure-web-dev-tutorial.compojure-routes
   (:require [compojure.core     :as compojure :refer [GET]]
             [ring.adapter.jetty :as jetty]
-            [clojure.data.json  :refer [json-str]]))
+            [ring.middleware.basic-authentication :as auth]
+            [clojure.data.json  :refer [json-str]]
+            [clojure.data.codec.base64 :as base64]))
+
+(defn encode
+  ;;Do not do this!
+  [secret]
+  (when secret
+    (reduce str (map char
+                     (clojure.data.codec.base64/encode
+                      (.getBytes secret))))))
+
+;;username is hello
+;;password is world
+(defn authenticated?
+  [name pass]
+  (and (= (encode name) "aGVsbG8=")
+       (= (encode pass) "d29ybGQ=")))
+
+(compojure/defroutes private-routes
+  (GET "/top-secret"
+    []
+    "For your eyes only"))
 
 (compojure/defroutes app
   ;;http://localhost:8080
@@ -17,9 +39,9 @@
   (GET "/error-name"
     []
     {:status 500
-     :body "Sorry, there has been a problem. Please try again with a different name"}))
+     :body "Sorry, there has been a problem. Please try again with a different name"})
 
-
+  (auth/wrap-basic-authentication private-routes authenticated?))
 
 
 (defn -main [& args]
