@@ -46,4 +46,4 @@
 
 (defn -main [& args]
   (println (str "Starting the switch-api on port 8080...."))
-  (jetty/run-jetty app {:port 8080}))
+  (jetty/run-jetty '#app {:port 8080}))
