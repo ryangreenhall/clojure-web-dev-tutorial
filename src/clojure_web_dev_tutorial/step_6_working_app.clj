@@ -7,7 +7,9 @@
             [ring.adapter.jetty                       :as jetty]
             [clojure.data.json                        :as json :refer [json-str read-json]]))
 
-(def download_url "http://localhost:8888/status.json")
+(def app-1-url "http://localhost:8888/status.json")
+
+(def app-2-url "http://localhost:8888/another-application-status.json")
 
 
 (compojure/defroutes app
@@ -18,15 +20,28 @@
       {:status 200
        :headers {"Content-Type"   "application/json"
                  "Vary"           "Accept-Encoding"}
-       :body (json-str {:requests   requests
+       :body (json-str {:name       "Cool but useless app"
+                        :requests   requests
                         :status     (if (< requests 10) "error" "ok")
+                        :messages   (int (* 1000 (Math/random)))})}))
+
+    (GET "/another-application-status.json"
+    []
+    (let [requests (int (* 100 (Math/random)))]
+      {:status 200
+       :headers {"Content-Type"   "application/json"
+                 "Vary"           "Accept-Encoding"}
+       :body (json-str {:name       "Super boring but important mission critical app"
+                        :requests   requests
+                        :status     (if (< requests 50) "error" "ok")
                         :messages   (int (* 1000 (Math/random)))})}))
 
 
   (GET "/"
     []
-    (let [data (json/read-json (:body (client/get download_url)))]
-      (dashboard/show data)))
+    (let [status-1 (json/read-json (:body (client/get app-1-url)))
+          status-2 (json/read-json (:body (client/get app-2-url)))]
+      (dashboard/show status-1 status-2)))
 
   (route/resources "/"))
 
