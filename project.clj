@@ -9,6 +9,7 @@
                  [ring-basic-authentication "1.0.0"]
                  [compojure "1.0.4"]
                  [hiccup "1.0.3"]
-                 [org.clojure/data.json "0.1.3"]]
+                 [org.clojure/data.json "0.1.3"]
+                 [clj-http "0.4.3" :exclusions [commons-codec]]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler clojure-web-dev-tutorial.hello-world/handler})
