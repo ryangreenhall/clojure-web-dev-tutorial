@@ -7,19 +7,23 @@
   `[:html
     [:head
      [:title "Clojure web development tutorial"]
-     [:link {:rel "stylesheet" :href "/stylesheets/bootstrap.min.css"}]]
+     [:link {:rel "stylesheet" :href "/stylesheets/bootstrap.min.css"}]
+     [:link {:rel "stylesheet" :href "/stylesheets/app.css"}]]
     [:body
-     [:h1 "Greeting"]
      ~content]])
 
 (defn show
-  [{:keys [requests status messages]}]
+  [& statuses]
   (hiccup/html
    (layout
     [:div.container
-     [:div.row-fluid
-      [:div.content.span9
-       [:h1 status]
-       [:ol
-        [:li requests]
-        [:li messages]]]]])))
+     [:div.page-header
+      [:h1 "Current Status"]
+      [:p.lead "This application will monitor a number of smaller applications"]]
+     (for [{:keys [name status messages requests]} statuses]
+       [:div.status
+        [:h3 name]
+        [:div.row {:class status}
+         [:div.col-md-4 status]
+         [:div.col-md-4 messages]
+         [:div.col-md-4 requests]]])])))
