@@ -4,13 +4,16 @@ Web Development in Clojure
 ** Overview
 ** project.clj
 ** Specifying dependencies
+
 * 2. Ring basics
+
 ** Handlers
 Define how your web app will behave. A ring handler is a function that takes a request map and returns a response map.
 ** Request and Response Maps
 ** Middleware
 ** Adaptors
-e.g Jetty adaptor
+e.g Jetty adaptor - Who's familiar with Java web dev? Jetty is a servlet container. Traditionally you would deploy a war into
+your container.  More recently people are favouring an embedded approach.
 
 ** Parameters
 ** First "Hello World" app using lein-ring (using hand-rolled routing)
@@ -18,14 +21,18 @@ e.g Jetty adaptor
 * 3. Compojure
 ** Routing
 ** mime types
+
 * 4. Deployment
-** Lets get the hello world app live on heroku
+
+** Lets get the hello world app live on heroku.  
 ** Discuss alternative deployment options. E.g Generate an uberjar
+
 * 5. The Monitoring Dashboard
 ** Imagine that you have an online business capturing orders. You would like a dashboard that shows
    the number of orders made, status of background job queues.
 ** Templating with clj-jade
 ** Adding some style (general static resource handling)
+
 * 6. Stories (needs fleshing out)
 ** Number of orders - Show the number of orders that have been made today so far
 ** Number of failed jobs on the email queue
@@ -33,7 +40,6 @@ e.g Jetty adaptor
 
 
 Perhaps have skeleton code with key pieces to be added by the attendees?
-
 
 * 7. Testing
 ** Out of container testing
@@ -52,3 +58,10 @@ Perhaps have skeleton code with key pieces to be added by the attendees?
 ** Templating libraries worth being aware of
    Hiccup
    Moustache
+
+
+
+Break after every hour?
+
+1 hour before lunch
+2 hours after lunch 
