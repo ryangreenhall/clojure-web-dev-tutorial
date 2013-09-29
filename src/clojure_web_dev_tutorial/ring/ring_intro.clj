@@ -1,4 +1,4 @@
-(ns clojure-web-dev-tutorial.ring-intro
+(ns clojure-web-dev-tutorial.ring.ring-intro
   (:require [ring.adapter.jetty :as jetty-adapter]))
 
 (defn handler
