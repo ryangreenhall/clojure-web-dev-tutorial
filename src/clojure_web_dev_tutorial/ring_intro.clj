@@ -9,5 +9,5 @@
    })
 
 (defn -main [& args]
-  (println "An introduction to Ring")
+  (println "Starting server...")
   (jetty-adapter/run-jetty handler {:port 8888}))
