@@ -5,4 +5,4 @@
 
 (deftest the-app
   (testing "the root says hello"
-    (is (= 0 1))))
+    (is (= "<h1>Hello World</h1>" (:body (app (request :get "/")))))))
