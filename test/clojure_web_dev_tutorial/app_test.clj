@@ -4,7 +4,18 @@
         ring.mock.request
         clojure-web-dev-tutorial.app))
 
+(defn html-from
+  [app-response]
+  (html-resource (html-snippet (:body app-response))))
+
+(defn title
+  [page]
+  (first (select page [:h1 text])))
+
 (deftest the-app
   (testing "the root says hello"
-    (html-resource (html-snippet "<html></html>"))
-    (is (= "<h1>Hello World</h1>" (:body (app (request :get "/")))))))
+
+    (let [page (html-from (app (request :get "/")))
+          title (title page)]
+
+     (is (= "Hello World" title)))))
