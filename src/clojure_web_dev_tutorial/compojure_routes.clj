@@ -1,34 +1,47 @@
 (ns clojure-web-dev-tutorial.compojure-routes
   (:require [compojure.core     :as compojure :refer [GET]]
-            [ring.adapter.jetty :as jetty]))
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.basic-authentication :as auth]
+            [clojure.data.json  :refer [json-str]]
+            [clojure.data.codec.base64 :as base64]))
+
+(defn encode
+  ;;Do not do this!
+  [secret]
+  (when secret
+    (reduce str (map char
+                     (clojure.data.codec.base64/encode
+                      (.getBytes secret))))))
+
+;;username is hello
+;;password is world
+(defn authenticated?
+  [name pass]
+  (and (= (encode name) "aGVsbG8=")
+       (= (encode pass) "d29ybGQ=")))
+
+(compojure/defroutes private-routes
+  (GET "/top-secret"
+    []
+    "For your eyes only"))
 
 (compojure/defroutes app
-  ;; Define you routes here
-
-  ;; 1. Define a route which responds to requests to "/" and returns a response with the body set to "hello world"
-
   ;;http://localhost:8080
   (GET "/"
     []
     "Hello World")
-
-  ;; 2. Define a route which responds to /greet/(any-name) where any name is a url parameter, and returns a response
-  ;;    with the body set to a "Hello (any-name)",
-  ;;    e.g. request  -> /greet/jon
-  ;;         response -> "hello jon"
 
   ;;http://localhost:8080/greet/jon
   (GET "/greet/:name"
     [name]
     (str "Hello " name))
 
-
-  ;; 3. Define a route which responds to /error-name which returns a status code of 500 and a body containing a friendly
-  ;;    error message
   (GET "/error-name"
     []
     {:status 500
-     :body "Sorry, there has been a problem. Please try again with a different name"}))
+     :body "Sorry, there has been a problem. Please try again with a different name"})
+
+  (auth/wrap-basic-authentication private-routes authenticated?))
 
 
 (defn -main [& args]
