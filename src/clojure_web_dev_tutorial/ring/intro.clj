@@ -14,7 +14,6 @@
 (defn handler
   [request]
   {
-   :body (str request)
    })
 
 (defn -main [& args]
