@@ -22,4 +22,11 @@
       [:p.lead "This application will monitor a number of smaller applications"]]
      ;; Fill this bit in
      ;; Here you have a collection of status maps, each with a number of keys
-     ;; Try and render all of the information in an informative way])))
+     ;; Try and render all of the information in an informative way
+       (for [{:keys [name status messages requests]} statuses]
+         [:div.status
+          [:h3 name]
+          [:div.row {:class status}
+           [:div.col-md-4 status]
+           [:div.col-md-4 messages]
+           [:div.col-md-4 requests]]])])))
