@@ -12,6 +12,7 @@
 (def app-2-url "http://localhost:8888/another-application-status.json")
 
 
+
 (compojure/defroutes app
 
   (GET "/status.json"
