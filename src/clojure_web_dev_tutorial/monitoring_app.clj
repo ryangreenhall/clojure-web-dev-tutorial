@@ -39,9 +39,11 @@
 
   (GET "/"
     []
-    (let [status-1 (json/read-json (:body (client/get app-1-url)))
-          status-2 (json/read-json (:body (client/get app-2-url)))]
-      (dashboard/show status-1 status-2)))
+    ;; Fill this bit in
+    ;; Should request data from the two urls defined above
+    ;; Should pass that data through to the dashboard view (defined in clojure-web-dev-tutorial.views.dashboard)
+    ;; Hint - check out the documentation for clj-http.client and clojure.data.json
+    )
 
   (route/resources "/"))
 
