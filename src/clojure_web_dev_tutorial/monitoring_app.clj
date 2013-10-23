@@ -7,9 +7,9 @@
             [ring.adapter.jetty                       :as jetty]
             [clojure.data.json                        :as json :refer [json-str read-json]]))
 
-(def app-1-url "/status.json")
+(def app-1-url "http://tranquil-inlet-1205.herokuapp.com/status.json")
 
-(def app-2-url "/another-application-status.json")
+(def app-2-url "http://tranquil-inlet-1205.herokuapp.com/another-application-status.json")
 
 
 
@@ -52,4 +52,4 @@
 
 (defn -main [& args]
   (println (str "Starting the switch-api"))
-  (jetty/run-jetty app))
+  (jetty/run-jetty app {}))
