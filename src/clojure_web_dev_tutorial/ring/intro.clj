@@ -47,7 +47,17 @@
 (def app-with-resources
   (-> welcome-to-fp-days-handler
       (resource/wrap-resource "public")))
+      
+(defn wrap-logging
+  [handler]
+  (fn [request]
+    (println request)
+    (handler request)))
+    
+(def logging-enabled-welcome-app
+  (-> welcome-to-fp-days-handler
+      wrap-logging))
 
 (defn -main [& args]
   (println "Starting server...")
-  (jetty-adapter/run-jetty app-with-resources {:port 8888}))
+  (jetty-adapter/run-jetty logging-enabled-welcome-app {:port 8888}))
