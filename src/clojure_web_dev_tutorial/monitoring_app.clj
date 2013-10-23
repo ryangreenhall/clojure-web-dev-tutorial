@@ -7,9 +7,9 @@
             [ring.adapter.jetty                       :as jetty]
             [clojure.data.json                        :as json :refer [json-str read-json]]))
 
-(def app-1-url "http://localhost:8888/status.json")
+(def app-1-url "/status.json")
 
-(def app-2-url "http://localhost:8888/another-application-status.json")
+(def app-2-url "/another-application-status.json")
 
 
 
@@ -51,5 +51,5 @@
   (route/resources "/"))
 
 (defn -main [& args]
-  (println (str "Starting the switch-api on port 8888...."))
-  (jetty/run-jetty app {:port 8888}))
+  (println (str "Starting the switch-api"))
+  (jetty/run-jetty app))
