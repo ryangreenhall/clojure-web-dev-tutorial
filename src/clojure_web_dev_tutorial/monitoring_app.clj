@@ -50,6 +50,6 @@
 
   (route/resources "/"))
 
-(defn -main [& args]
+(defn -main [& [port]]
   (println (str "Starting the switch-api"))
-  (jetty/run-jetty app {}))
+  (jetty/run-jetty app {:port (or (Integer/parseInt port) 8888)}))
