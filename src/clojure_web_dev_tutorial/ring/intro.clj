@@ -14,6 +14,7 @@
 ; 5. Static resources
 
 ; 6. Middleware
+;    - Write a simple middleware function that logs the request to the console.
 
 ; 7. Parameter passing
 
@@ -32,7 +33,16 @@
     :body (str "Welcome to FPDays")
    })
    
+(defn routing-handler
+  [request]
+  (let [uri (:uri request)]
+    (if (= uri "/")
+        {:status 200
+         :body "Hello FP Days"}
+        {:status 404
+         :body "Not Found!"})))
+   
 
 (defn -main [& args]
   (println "Starting server...")
-  (jetty-adapter/run-jetty welcome-to-fp-days-handler {:port 8888}))
+  (jetty-adapter/run-jetty routing-handler {:port 8888}))
