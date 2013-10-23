@@ -1,5 +1,6 @@
 (ns clojure-web-dev-tutorial.ring.intro
-  (:require [ring.adapter.jetty :as jetty-adapter]))
+  (:require [ring.adapter.jetty :as jetty-adapter]
+            [ring.middleware.resource :as resource]))
 
 ; 1. Write the request params to the response.
 
@@ -11,10 +12,11 @@
 
 ; 4. Routing / => "Hello FP Days", anything else returns 404
 
-; 5. Static resources
-
-; 6. Middleware
+; 5. Middleware
 ;    - Write a simple middleware function that logs the request to the console.
+
+; 6. Static resources
+;    - Configure the app to serve the css in the public dir. Hint: resource middleware
 
 ; 7. Parameter passing
 
@@ -42,7 +44,10 @@
         {:status 404
          :body "Not Found!"})))
    
+(def app-with-resources
+  (-> welcome-to-fp-days-handler
+      (resource/wrap-resource "public")))
 
 (defn -main [& args]
   (println "Starting server...")
-  (jetty-adapter/run-jetty routing-handler {:port 8888}))
+  (jetty-adapter/run-jetty app-with-resources {:port 8888}))
