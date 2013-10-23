@@ -4,6 +4,8 @@
                  [compojure "1.1.5"]
                  [ring "1.2.0"]
                  [ring-mock "0.1.5"]
-                 [enlive "1.1.4"]]
+                 [enlive "1.1.4"]
+                 [clj-http "0.7.7"]
+                 [org.clojure/data.json "0.2.3"]]
   :plugins [[lein-ring "0.8.5"]]
-  :ring {:handler clojure-web-dev-tutorial.ring.intro/handler})
+  :ring {:handler clojure-web-dev-tutorial.monitoring-app/app})

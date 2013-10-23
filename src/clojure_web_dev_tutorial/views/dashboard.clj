@@ -22,4 +22,5 @@
       [:p.lead "This application will monitor a number of smaller applications"]]
      ;; Fill this bit in
      ;; Here you have a collection of status maps, each with a number of keys
-     ;; Try and render all of the information in an informative way])))
+     ;; Try and render all of the information in an informative way
+     ])))

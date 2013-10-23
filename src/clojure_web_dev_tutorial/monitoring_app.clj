@@ -1,4 +1,4 @@
-(ns clojure-web-dev-tutorial.step-6-working-app
+(ns clojure-web-dev-tutorial.monitoring-app
   (:require [clojure-web-dev-tutorial.views.dashboard :as dashboard]
             [compojure.core                           :as compojure :refer [GET POST]]
             [clj-http.client                          :as client]
@@ -43,7 +43,7 @@
     ;; Should request data from the two urls defined above
     ;; Should pass that data through to the dashboard view (defined in clojure-web-dev-tutorial.views.dashboard)
     ;; Hint - check out the documentation for clj-http.client and clojure.data.json
-    )
+    "TODO")
 
   (route/resources "/"))
 
