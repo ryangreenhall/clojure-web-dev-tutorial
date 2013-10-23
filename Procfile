@@ -1,0 +1,1 @@
+web: java $JVM_OPTS -cp target/clojure-web-dev-tutorial-standalone.jar clojure.main -m clojure-web-dev-tutorial.monitoring-app $PORT

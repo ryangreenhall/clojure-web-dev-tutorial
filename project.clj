@@ -7,5 +7,6 @@
                  [enlive "1.1.4"]
 				 [clj-http "0.7.7"]
 				 [org.clojure/data.json "0.2.3"]]
+  :uberjar-name "clojure-web-dev-tutorial-standalone.jar"
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler clojure-web-dev-tutorial.monitoring-app/app})
