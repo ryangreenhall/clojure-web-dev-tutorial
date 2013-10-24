@@ -3,8 +3,6 @@
             [ring.middleware.resource :as resource]
             [ring.util.response :as response]))
 
-; 7. Parameter passing
-
 ; 1. Write the request params to the response.
 (defn request-in-response-handler
   [request]
@@ -57,8 +55,14 @@
 (def app-with-resources
   (-> welcome-to-fp-days-handler
       (resource/wrap-resource "public")))
+      
+; 7. Parameter passing
+
+(defn parameter-handling-handler
+    [request]
+    (response/response (str "Params: " (:query-string request))))
 
 
 (defn -main [& args]
   (println "Starting server...")
-  (jetty-adapter/run-jetty welcome-with-response-helpers {:port 8888}))
+  (jetty-adapter/run-jetty parameter-handling-handler {:port 8888}))
