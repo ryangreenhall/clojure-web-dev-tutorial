@@ -4,4 +4,4 @@
                  [ring/ring-core "1.2.0"]
                  [ring/ring-jetty-adapter "1.1.0"]]            
   :plugins [[lein-ring "0.8.5"]]
-  :ring {:handler clojure-web-dev-tutorial.ring.intro/handler})
+  :ring {:handler clojure-web-dev-tutorial.ring.intro/request-in-response-handler})
