@@ -1,10 +1,7 @@
 (ns clojure-web-dev-tutorial.ring.intro
   (:require [ring.adapter.jetty :as jetty-adapter]
-            [ring.middleware.resource :as resource]))
-
-
-; 3. Use response helpers. 
-
+            [ring.middleware.resource :as resource]
+            [ring.util.response :as response]))
 
 ; 7. Parameter passing
 
@@ -25,6 +22,12 @@
     :headers {"Content-Type" "text/plain"}
     :body (str "Welcome to FPDays")
    })
+
+; 3. Use response helpers. 
+(defn welcome-with-response-helpers
+    [request]
+    (-> (response/response "Welcome to FPDays")
+        (response/content-type "text/plain")))
 
 ; 4. Routing / => "Hello FP Days", anything else returns 404   
 (defn routing-handler
@@ -58,4 +61,4 @@
 
 (defn -main [& args]
   (println "Starting server...")
-  (jetty-adapter/run-jetty logging-enabled-welcome-app {:port 8888}))
+  (jetty-adapter/run-jetty welcome-with-response-helpers {:port 8888}))
