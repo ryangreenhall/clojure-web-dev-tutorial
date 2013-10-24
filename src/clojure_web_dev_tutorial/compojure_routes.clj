@@ -14,6 +14,7 @@
 
   ;; 3. Define a route which responds to /error-name which returns a status code of 500 and a body containing a friendly
   ;;    error message
+)
 
 (defn -main [& args]
   (println (str "Starting the switch-api on port 8080...."))
