@@ -16,6 +16,11 @@
 
 ;; 5. Add a route and protect it with Ring Basic Auth Middleware 
 
+;; 6. Add an endpoint which returns json
+
+;; 7. Add a route which gets data from the endpoint you wrote in 6., and depending on some aspect of it, 
+;;    returns a different result (hint, try the clj-http library)
+
 
 
 (compojure/defroutes app
