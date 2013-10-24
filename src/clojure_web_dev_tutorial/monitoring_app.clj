@@ -7,9 +7,9 @@
             [ring.adapter.jetty                       :as jetty]
             [clojure.data.json                        :as json :refer [json-str read-json]]))
 
-(def app-1-url "http://tranquil-inlet-1205.herokuapp.com/status.json")
+(def app-1-url "http://fp-days.herokuapp.com/status.json")
 
-(def app-2-url "http://tranquil-inlet-1205.herokuapp.com/another-application-status.json")
+(def app-2-url "http://fp-days.herokuapp.com/another-application-status.json")
 
 
 
